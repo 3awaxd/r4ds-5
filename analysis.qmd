@@ -30,6 +30,7 @@ pluck(raw, "features", 1, "geometry", "coordinates", 1, 1)
 ```
 
 ```{r}
+#| cache: true
 fires <- jsonlite::read_json("data/wildfires.geojson") |>
   pluck("features") |>
   tibble(features = _) |>
