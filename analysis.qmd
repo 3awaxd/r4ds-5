@@ -29,5 +29,10 @@ pluck(raw, "features", 1) |> names()
 pluck(raw, "features", 1, "geometry", "coordinates", 1, 1)
 ```
 
+```{r}
+tibble(features = raw$features)
+```
+
+
 
 
