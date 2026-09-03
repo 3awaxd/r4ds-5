@@ -121,19 +121,7 @@ imdb_snapshots |>
   ) |>
   group_by(decade) |>
   summarise(avg_change = mean(rank_change), .groups = "drop") |>
-  mutate(direction = if_else(avg_change > 0, "Rose", "Fell")) |>
-  ggplot(aes(x = avg_change, y = decade, fill = direction)) +
-  geom_col() +
-  geom_vline(xintercept = 0, linewidth = 0.8) +
-  scale_fill_manual(values = c("Rose" = "#2a9d8f", "Fell" = "#e76f51")) +
-  labs(
-    title = "Classic Films Slide, 1990s Films Hold Steady",
-    subtitle = "Average rank change in the IMDb Top 250, 2015 to 2022",
-    x = "Average rank change (positive = rose)",
-    y = "Film release decade",
-    fill = NULL,
-    caption = "Films appearing in both 2015 and 2022 snapshots. n = 190 films."
-  ) +
-  theme_minimal() +
-  theme(legend.position = "bottom")
+  ggplot(aes(x = avg_change, y = decade)) +
+  geom_col()
 ```
+
