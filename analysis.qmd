@@ -21,3 +21,8 @@ raw <- jsonlite::read_json("data/wildfires.geojson")
 length(raw$features)
 ```
 
+```{r}
+pluck(raw, "features", 1) |> names()
+```
+
+
