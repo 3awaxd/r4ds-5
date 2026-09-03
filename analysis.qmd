@@ -31,7 +31,8 @@ pluck(raw, "features", 1, "geometry", "coordinates", 1, 1)
 
 ```{r}
 tibble(features = raw$features) |>
-  unnest_wider(features)
+  unnest_wider(features) |>
+  unnest_wider(properties)
 ```
 
 
