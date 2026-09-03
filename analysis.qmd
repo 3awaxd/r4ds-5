@@ -25,4 +25,9 @@ length(raw$features)
 pluck(raw, "features", 1) |> names()
 ```
 
+```{r}
+pluck(raw, "features", 1, "geometry", "coordinates", 1, 1)
+```
+
+
 
