@@ -2,4 +2,16 @@
 title: "Wildfires and Movies"
 author: "3awaxd"
 format: html
+execute:
+  echo: false
 ---
+
+```{r}
+#| message: false
+library(tidyverse)
+library(purrr)
+library(leaflet)
+library(rvest)
+library(httr2)
+library(jsonlite)
+```
