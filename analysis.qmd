@@ -15,3 +15,9 @@ library(rvest)
 library(httr2)
 library(jsonlite)
 ```
+
+```{r}
+raw <- jsonlite::read_json("data/wildfires.geojson")
+length(raw$features)
+```
+
