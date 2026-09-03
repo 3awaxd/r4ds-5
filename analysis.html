@@ -97,21 +97,20 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 883 × 11
-   type  id    geometry     incident gis_acres fire_year agency state map_method
-   &lt;chr&gt; &lt;chr&gt; &lt;list&gt;       &lt;chr&gt;        &lt;dbl&gt;     &lt;int&gt; &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;     
- 1 Feat… ""    &lt;named list&gt; CAMPBELL   131504.      1990 USFS   CA    Unknown   
- 2 Feat… "199… &lt;named list&gt; Pine Sp…    71831       1990 USFS   OR    Other     
- 3 Feat… "199… &lt;named list&gt; Dude        24756.      1990 USFS   AZ    Other Age…
- 4 Feat… ""    &lt;named list&gt; STORMY      22883.      1990 USFS   CA    Unknown   
- 5 Feat… ""    &lt;named list&gt; LOS PAD…    20540.      1990 USFS   CA    Unknown   
- 6 Feat… "199… &lt;named list&gt; Big         18485.      1990 USFS   NM    Digitized…
- 7 Feat… "199… &lt;named list&gt; A-ROCK      17758.      1990 NPS    CA    Unknown   
- 8 Feat… ""    &lt;named list&gt; A-ROCK      17758.      1990 USFS   CA    Unknown   
- 9 Feat… ""    &lt;named list&gt; Unknown     14471.      1990 USFS   CA    Unknown   
-10 Feat… ""    &lt;named list&gt; INDIAN …    12582.      1990 USFS   ID    Unknown   
-# ℹ 873 more rows
-# ℹ 2 more variables: date_current &lt;chr&gt;, unique_fire_id &lt;chr&gt;</code></pre>
+<pre><code># A tibble: 883 × 6
+   incident       gis_acres fire_year agency state geometry_coordinates
+   &lt;chr&gt;              &lt;dbl&gt;     &lt;int&gt; &lt;chr&gt;  &lt;chr&gt; &lt;list&gt;              
+ 1 CAMPBELL         131504.      1990 USFS   CA    &lt;list [1]&gt;          
+ 2 Pine Springs      71831       1990 USFS   OR    &lt;list [1]&gt;          
+ 3 Dude              24756.      1990 USFS   AZ    &lt;list [1]&gt;          
+ 4 STORMY            22883.      1990 USFS   CA    &lt;list [1]&gt;          
+ 5 LOS PADRES        20540.      1990 USFS   CA    &lt;list [1]&gt;          
+ 6 Big               18485.      1990 USFS   NM    &lt;list [1]&gt;          
+ 7 A-ROCK            17758.      1990 NPS    CA    &lt;list [1]&gt;          
+ 8 A-ROCK            17758.      1990 USFS   CA    &lt;list [1]&gt;          
+ 9 Unknown           14471.      1990 USFS   CA    &lt;list [1]&gt;          
+10 INDIAN SPRINGS    12582.      1990 USFS   ID    &lt;list [1]&gt;          
+# ℹ 873 more rows</code></pre>
 </div>
 </div>
 
