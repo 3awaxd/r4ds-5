@@ -17,19 +17,6 @@ library(jsonlite)
 ```
 
 ```{r}
-raw <- jsonlite::read_json("data/wildfires.geojson")
-length(raw$features)
-```
-
-```{r}
-pluck(raw, "features", 1) |> names()
-```
-
-```{r}
-pluck(raw, "features", 1, "geometry", "coordinates", 1, 1)
-```
-
-```{r}
 #| cache: true
 fires <- jsonlite::read_json("data/wildfires.geojson") |>
   pluck("features") |>
@@ -45,19 +32,41 @@ fires <- jsonlite::read_json("data/wildfires.geojson") |>
 ```
 
 ```{r}
-fires |>
-  ggplot(aes(x = gis_acres)) +
-  geom_histogram(bins = 40) +
-  scale_x_log10() +
-  labs(
-    title = "Distribution of Western US Wildfire Sizes",
-    x = "Acres burned (log scale)",
-    y = "Number of fires",
-    caption = "Source: NIFC InterAgencyFirePerimeterHistory"
+centroid_lon <- function(coords) {
+  mean(map_dbl(coords[[1]], 1))
+}
+centroid_lat <- function(coords) {
+  mean(map_dbl(coords[[1]], 2))
+}
+
+big_fires <- fires |>
+  filter(gis_acres >= 100000) |>
+  mutate(
+    lon = map_dbl(geometry_coordinates, centroid_lon),
+    lat = map_dbl(geometry_coordinates, centroid_lat)
   )
 ```
 
+```{r}
+top_ten <- big_fires |> slice_max(gis_acres, n = 10)
 
-
-
-
+leaflet() |>
+  addTiles() |>
+  setView(lng = -117, lat = 40, zoom = 5) |>
+  addPolygons(
+    data = top_ten |>
+      transmute(pts = purrr::map(geometry_coordinates,
+                                 \(g) tibble(lng = map_dbl(g[[1]], 1),
+                                             lat = map_dbl(g[[1]], 2)) |>
+                                   add_row(lng = NA, lat = NA))) |>
+      unnest(pts),
+    lng = ~lng,
+    lat = ~lat,
+    weight      = 1,
+    color       = "#cc4400",
+    fillColor   = "#ff7733",
+    fillOpacity = 0.5,
+    popup = paste0(top_ten$incident, " (", top_ten$fire_year, "), ",
+                   format(round(top_ten$gis_acres), big.mark = ","), " acres")
+  )
+```
