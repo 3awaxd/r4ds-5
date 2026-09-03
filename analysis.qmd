@@ -41,7 +41,6 @@ fires <- jsonlite::read_json("data/wildfires.geojson") |>
     gis_acres = as.numeric(gis_acres),
     fire_year = as.integer(fire_year)
   )
-fires
 ```
 
 
