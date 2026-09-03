@@ -44,6 +44,12 @@ fires <- jsonlite::read_json("data/wildfires.geojson") |>
   )
 ```
 
+```{r}
+fires |> filter(str_detect(incident, "August"))
+fires |> arrange(desc(gis_acres)) |> head(10)
+```
+
+
 
 
 
